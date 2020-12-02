@@ -1,6 +1,6 @@
 jenkins:
   authorizationStrategy: "cloudBeesRoleBasedAccessControl"
-  systemMessage: 'Jenkins configured using CloudBees CI CasC - v2'
+  systemMessage: 'Jenkins configured using CloudBees CI CasC - v3'
 unclassified:
   hibernationConfiguration:
     activities:
@@ -55,8 +55,6 @@ kube:
           memory: false
           mountPath: "/var/maven/"
       yamlMergeStrategy: "override"
-groovy:
-  - url: https://raw.githubusercontent.com/cbci-vault-demo/cloudbees-ci-config-bundle/master/groovy/create-pipeline-template-job.groovy
 credentials:
   system:
     domainCredentials:
@@ -73,3 +71,14 @@ credentials:
           id: "cloudbees-ci-workshop-github-app"
           owner: "cbci-vault-demo"
           privateKey: "${gitHubAppPrivateKey}"
+cloudbees-slack-integration:
+  config:
+    slackToken: "${slackToken}"
+    slackWorkspace: "T010A455W77"
+    users:
+    - id: "beedemo-dev"
+      jenkins: "beedemo-dev"
+      optedIn: true
+      scmId: "beedemo-dev"
+      slack: "REPLACE_USER_EMAIL"
+      slackWorkspace: "T010A455W77"
