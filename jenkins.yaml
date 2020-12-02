@@ -39,3 +39,8 @@ credentials:
           id: "cloudbees-ci-workshop-github-app"
           owner: "cbci-vault-demo"
           privateKey: "${gitHubAppPrivateKey}"
+      - vaultKubernetesCredential:
+          description: "vault-jenkins-k8s"
+          id: "vault-jenkins-k8s"
+          role: "jenkins-agent-role"
+          scope: GLOBAL
