@@ -1,5 +1,5 @@
 jenkins:
-  systemMessage: 'Jenkins configured using CloudBees CI CasC - v3'
+  systemMessage: 'Jenkins configured using CloudBees CI CasC - v4'
 unclassified:
   hashicorpVault:
     configuration:
@@ -38,7 +38,8 @@ credentials:
       - usernamePassword:
           scope: GLOBAL
           id: "database-config"
-          username: ${database/config/username}
+          description: "Vault Example"
+          username: "${database/config/username}"
           password: "${database/config/password}"
       - string:
           description: "Webhook secret for CloudBees CI Workshop GitHub App"
