@@ -35,6 +35,11 @@ credentials:
   system:
     domainCredentials:
     - credentials:
+      - usernamePassword:
+          scope: GLOBAL
+          id: "database-config"
+          username: ${database/config/username}
+          password: "${database/config/password}"
       - string:
           description: "Webhook secret for CloudBees CI Workshop GitHub App"
           id: "cloudbees-ci-workshop-github-webhook-secret"
