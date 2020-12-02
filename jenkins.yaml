@@ -1,4 +1,5 @@
 jenkins:
+  authorizationStrategy: "cloudBeesRoleBasedAccessControl"
   systemMessage: 'Jenkins configured using CloudBees CI CasC - v2'
 unclassified:
   hibernationConfiguration:
@@ -54,6 +55,8 @@ kube:
           memory: false
           mountPath: "/var/maven/"
       yamlMergeStrategy: "override"
+groovy:
+  - url: https://raw.githubusercontent.com/cbci-vault-demo/cloudbees-ci-config-bundle/master/groovy/create-pipeline-template-job.groovy
 credentials:
   system:
     domainCredentials:
