@@ -1,12 +1,20 @@
 jenkins:
-  systemMessage: 'Jenkins configured using CloudBees CI CasC - v2'
+  systemMessage: 'Jenkins configured using CloudBees CI CasC - v6'
 unclassified:
+  hashicorpVault:
+    configuration:
+      engineVersion: 2
+      failIfNotFound: false
+      skipSslVerification: true
+      timeout: 60
+      vaultCredentialId: "vault-jenkins-k8s"
+      vaultUrl: "https://35.245.55.146"
   hibernationConfiguration:
     activities:
     - "build"
     - "web"
     enabled: true
-    gracePeriod: 1500
+    gracePeriod: 6400
   gitHubConfiguration:
     apiRateLimitChecker: ThrottleForNormalize
   gitHubPluginConfig:
@@ -58,6 +66,12 @@ credentials:
   system:
     domainCredentials:
     - credentials:
+      - usernamePassword:
+          scope: GLOBAL
+          id: "database-config"
+          description: "Vault Example"
+          username: "${secret/jenkins/database/config/username}"
+          password: "${secret/jenkins/database/config/password}"
       - string:
           description: "Webhook secret for CloudBees CI Workshop GitHub App"
           id: "cloudbees-ci-workshop-github-webhook-secret"
@@ -70,3 +84,8 @@ credentials:
           id: "cloudbees-ci-workshop-github-app"
           owner: "cbci-vault-demo"
           privateKey: "${gitHubAppPrivateKey}"
+      - vaultKubernetesCredential:
+          description: "vault-jenkins-k8s"
+          id: "vault-jenkins-k8s"
+          role: "jenkins-agent-role"
+          scope: GLOBAL

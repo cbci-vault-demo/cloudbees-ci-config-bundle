@@ -22,6 +22,8 @@ plugins:
 - id: forensics-api
 - id: git
 - id: github-branch-source
+- id: hashicorp-vault-pipeline
+- id: hashicorp-vault-plugin
 - id: jacoco
 - id: jquery3-api
 - id: managed-master-hibernation
